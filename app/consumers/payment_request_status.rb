@@ -7,6 +7,7 @@ class PaymentRequestStatus
   def process(message)
     payment_request_id = message.body[:id]
     payment_request_status = message.body[:status]
+
     payment_request = PaymentRequest.find(payment_request_id)
     payment_request.update!(status: payment_request_status)
   end

@@ -31,7 +31,7 @@ class PaymentRequestsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @payment_request.update(payment_request_params)
+      if @payment_request.pending? && @payment_request.update(payment_request_params)
         format.html do
           redirect_to payment_request_url(@payment_request), notice: 'Payment request was successfully updated.'
         end
